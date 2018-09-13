@@ -48,18 +48,37 @@ void loop() {
 //  }
 
   switch (now.hour()) {
+          
   case 9:
+    if((m == 30)||(m == 40)){
+        chime ();
+    }
+    break;
   case 10:
   case 11:
-  case 12:
     if ((m == 35) || (m == 45)) {
       chime ();
     }
     break;
+
+      case 12:
+          if(m == 35){
+              chime ();
+          }
+          break;
+      case 13:
+          if(m == 15){
+              chime ();
+          }
+          break;
   case 14:
   case 15:
+          if((m == 5)||(m == 15)){
+              chime();
+          }
+          break;
   case 16:
-    if ((m == 5) || (m == 15)) {
+    if (m == 5) {
       chime ();
     }
     break;
@@ -77,17 +96,15 @@ void loop() {
     break;
   }
 
-  delay(5000);  
+  delay(5000);
 }
 
 void chime () {
   Serial.println("Ring the chime!");
-  
   digitalWrite(PLAY, HIGH);
   delay(10);  
   digitalWrite(PLAY, LOW);
   delay(10000);
-  
   digitalWrite(STOP, HIGH);
   delay(10);  
   digitalWrite(STOP, LOW);
